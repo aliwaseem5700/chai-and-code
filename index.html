@@ -276,12 +276,37 @@
           <div class="area-filter-box">
             <label for="areaFilter" class="filter-label">Neighborhood:</label>
             <select id="areaFilter" class="form-select">
-              <option value="all">📍 All Neighborhoods</option>
-              <option value="Indiranagar">Indiranagar</option>
-              <option value="Koramangala">Koramangala</option>
-              <option value="HSR Layout">HSR Layout</option>
-              <option value="Bandra">Bandra</option>
-              <option value="Malleshwaram">Malleshwaram</option>
+              <option value="all">📍 All Locations (India &amp; Kerala)</option>
+              
+              <optgroup label="🌴 Kerala — All 14 Districts &amp; Hubs">
+                <option value="Kochi">Kochi / Ernakulam (Kakkanad, Fort Kochi, Edappally)</option>
+                <option value="Thiruvananthapuram">Thiruvananthapuram (Technopark, Palayam)</option>
+                <option value="Kozhikode">Kozhikode / Calicut (Cyberpark, Beach Rd)</option>
+                <option value="Thrissur">Thrissur (Swaraj Round, Town)</option>
+                <option value="Kannur">Kannur (Thalassery, Payyambalam)</option>
+                <option value="Kollam">Kollam (Beach, Ashramam)</option>
+                <option value="Alappuzha">Alappuzha / Alleppey</option>
+                <option value="Kottayam">Kottayam (Kumarakom, Pala)</option>
+                <option value="Palakkad">Palakkad</option>
+                <option value="Malappuram">Malappuram (Manjeri, Perinthalmanna)</option>
+                <option value="Wayanad">Wayanad (Kalpetta, Sultan Bathery)</option>
+                <option value="Idukki">Idukki (Munnar, Thodupuzha)</option>
+                <option value="Kasaragod">Kasaragod</option>
+                <option value="Pathanamthitta">Pathanamthitta (Thiruvalla, Adoor)</option>
+              </optgroup>
+
+              <optgroup label="🇮🇳 Other Major Indian Hubs">
+                <option value="Bengaluru">Bengaluru (Indiranagar, Koramangala, HSR, Whitefield)</option>
+                <option value="Mumbai">Mumbai (Bandra, Andheri, Powai, South Mumbai)</option>
+                <option value="Delhi NCR">Delhi NCR (Connaught Place, Gurgaon, Noida)</option>
+                <option value="Hyderabad">Hyderabad (Hitec City, Madhapur, Gachibowli)</option>
+                <option value="Chennai">Chennai (Adyar, OMR, Anna Nagar)</option>
+                <option value="Pune">Pune (Koregaon Park, Hinjewadi, Baner)</option>
+                <option value="Kolkata">Kolkata (Salt Lake, New Town, Park Street)</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Coimbatore">Coimbatore</option>
+                <option value="Goa">Goa</option>
+              </optgroup>
             </select>
           </div>
         </div>
@@ -340,12 +365,12 @@
               We recommend safe, vibrant, and well-lit public spots with good tea, reliable Wi-Fi, and comfortable seating. Many partner cafes offer 10% off on cutting chai and samosas for Chai &amp; Code pairs!
             </p>
             <div class="cafe-spots-chips">
-              <span class="spot-chip">☕ Third Wave Coffee (Indiranagar)</span>
-              <span class="spot-chip">🍵 Chaayos (Koramangala 80ft Rd)</span>
-              <span class="spot-chip">📖 Central Public Library Reading Veranda</span>
-              <span class="spot-chip">☕ Subko Coffee Roasters (Bandra West)</span>
-              <span class="spot-chip">☕ Blue Tokai Coffee (Indiranagar)</span>
-              <span class="spot-chip">🌿 Green Library Cafe (HSR Sector 2)</span>
+              <span class="spot-chip">☕ Kashi Art Café (Fort Kochi, Kerala)</span>
+              <span class="spot-chip">🍵 French Toast &amp; Chai (Panampilly Nagar, Kochi)</span>
+              <span class="spot-chip">📖 State Central Library (Palayam, Trivandrum)</span>
+              <span class="spot-chip">☕ Paragon Tea Room &amp; Beach (Kozhikode)</span>
+              <span class="spot-chip">🌿 Infopark Chaya Hub (Kakkanad, Kochi)</span>
+              <span class="spot-chip">☕ Third Wave Coffee (Indiranagar / Bengaluru)</span>
             </div>
           </div>
         </div>
@@ -396,12 +421,35 @@
                 <div class="form-group">
                   <label for="regNeighborhood">Neighborhood / Area *</label>
                   <select id="regNeighborhood" class="form-control" required>
-                    <option value="Indiranagar">Indiranagar</option>
-                    <option value="Koramangala">Koramangala</option>
-                    <option value="HSR Layout">HSR Layout</option>
-                    <option value="Bandra">Bandra</option>
-                    <option value="Malleshwaram">Malleshwaram</option>
-                    <option value="Downtown / Central">Downtown / Central</option>
+                    <optgroup label="🌴 Kerala — All 14 Districts &amp; Hubs">
+                      <option value="Kochi / Ernakulam, Kerala" selected>Kochi / Ernakulam (Kakkanad, Fort Kochi, Edappally)</option>
+                      <option value="Thiruvananthapuram, Kerala">Thiruvananthapuram (Technopark, Palayam)</option>
+                      <option value="Kozhikode / Calicut, Kerala">Kozhikode / Calicut (Cyberpark, Beach Rd)</option>
+                      <option value="Thrissur, Kerala">Thrissur (Swaraj Round, Town)</option>
+                      <option value="Kannur, Kerala">Kannur (Thalassery, Payyambalam)</option>
+                      <option value="Kollam, Kerala">Kollam (Beach, Ashramam)</option>
+                      <option value="Alappuzha, Kerala">Alappuzha / Alleppey</option>
+                      <option value="Kottayam, Kerala">Kottayam (Kumarakom, Pala)</option>
+                      <option value="Palakkad, Kerala">Palakkad</option>
+                      <option value="Malappuram, Kerala">Malappuram (Manjeri, Perinthalmanna)</option>
+                      <option value="Wayanad, Kerala">Wayanad (Kalpetta, Sultan Bathery)</option>
+                      <option value="Idukki, Kerala">Idukki (Munnar, Thodupuzha)</option>
+                      <option value="Kasaragod, Kerala">Kasaragod</option>
+                      <option value="Pathanamthitta, Kerala">Pathanamthitta (Thiruvalla, Adoor)</option>
+                    </optgroup>
+                    <optgroup label="🇮🇳 Other Major Indian Hubs">
+                      <option value="Bengaluru, Karnataka">Bengaluru (Indiranagar, Koramangala, HSR)</option>
+                      <option value="Mumbai, Maharashtra">Mumbai (Bandra, Andheri, Powai)</option>
+                      <option value="Delhi NCR">Delhi NCR (Connaught Place, Gurgaon, Noida)</option>
+                      <option value="Hyderabad, Telangana">Hyderabad (Hitec City, Madhapur)</option>
+                      <option value="Chennai, Tamil Nadu">Chennai (Adyar, OMR, Anna Nagar)</option>
+                      <option value="Pune, Maharashtra">Pune (Koregaon Park, Hinjewadi)</option>
+                      <option value="Kolkata, West Bengal">Kolkata (Salt Lake, New Town)</option>
+                      <option value="Ahmedabad, Gujarat">Ahmedabad</option>
+                      <option value="Coimbatore, Tamil Nadu">Coimbatore</option>
+                      <option value="Goa">Goa</option>
+                      <option value="Other City / Town, India">Other City / Town (India)</option>
+                    </optgroup>
                   </select>
                 </div>
               </div>
@@ -482,7 +530,7 @@
                       <h4 class="author-name" id="prevFullName">Your Name</h4>
                       <div class="author-location">
                         <span class="location-pin">📍</span>
-                        <span id="prevNeighborhood">Indiranagar</span>
+                        <span id="prevNeighborhood">Kochi / Ernakulam, Kerala</span>
                         <span class="verified-tag">✓ Verified</span>
                       </div>
                     </div>
@@ -505,7 +553,7 @@
                 <div class="card-footer">
                   <div class="cafe-spot">
                     <span class="cafe-icon">☕</span>
-                    <span id="prevSpot">Third Wave Coffee, 12th Main</span>
+                    <span id="prevSpot">Kashi Art Café, Fort Kochi</span>
                   </div>
                   <button class="btn btn-sm btn-outline" disabled>Propose a Swap</button>
                 </div>
@@ -560,12 +608,12 @@
       </div>
 
       <div class="footer-links-group">
-        <h4>Neighborhoods</h4>
-        <span>📍 Indiranagar</span>
-        <span>📍 Koramangala</span>
-        <span>📍 HSR Layout</span>
-        <span>📍 Bandra</span>
-        <span>📍 Malleshwaram</span>
+        <h4>Kerala &amp; India Hubs</h4>
+        <span>🌴 Kochi / Ernakulam</span>
+        <span>🌴 Thiruvananthapuram</span>
+        <span>🌴 Kozhikode / Calicut</span>
+        <span>🌴 Thrissur &amp; Kannur</span>
+        <span>📍 Bengaluru &amp; Mumbai</span>
       </div>
     </div>
     <div class="footer-bottom">

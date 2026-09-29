@@ -170,7 +170,7 @@ function updateAuthUI(user) {
     DOM.navUserAvatar.textContent = user.avatar || '☕';
     if (DOM.regFullName && !DOM.regFullName.value) {
       DOM.regFullName.value = user.full_name || '';
-      DOM.regNeighborhood.value = user.neighborhood || 'Indiranagar';
+      DOM.regNeighborhood.value = user.neighborhood || 'Kochi / Ernakulam, Kerala';
     }
   } else {
     DOM.authGuest.classList.remove('hidden');
@@ -423,7 +423,7 @@ window.setCategoryFilter = function(category) {
 // ==========================================================================
 function updateLiveCardPreview() {
   const fullName = DOM.regFullName.value.trim() || 'Your Name';
-  const neighborhood = DOM.regNeighborhood.value || 'Indiranagar';
+  const neighborhood = DOM.regNeighborhood.value || 'Kochi / Ernakulam, Kerala';
   const teachSkill = DOM.regTeachSkill.value.trim() || 'What you can teach...';
   const learnSkill = DOM.regLearnSkill.value.trim() || 'What you want to learn...';
   const category = DOM.regTeachCategory.value || 'tech';

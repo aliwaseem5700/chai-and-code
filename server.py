@@ -290,7 +290,7 @@ class ChaiAndCodeHandler(SimpleHTTPRequestHandler):
             username = body.get('username', '').strip().lower()
             password = body.get('password', '').strip()
             full_name = body.get('fullName', '').strip()
-            neighborhood = body.get('neighborhood', 'Indiranagar').strip()
+            neighborhood = body.get('neighborhood', 'Kochi / Ernakulam, Kerala').strip()
             bio = body.get('bio', '').strip()
             teach_skill = body.get('teachSkill', '').strip()
             teach_category = body.get('teachCategory', 'tech').strip().lower()
