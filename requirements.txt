@@ -1,0 +1,2 @@
+# Chai & Code uses Python's standard library (sqlite3, http.server, hashlib, json, uuid).
+# No external pip packages are required!

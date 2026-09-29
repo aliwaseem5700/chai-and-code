@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chai & Code — Local Neighborhood Skills-Swap</title>
+  <meta name="description" content="Trade skills instead of money. Learn Excel, teach Canva or cooking, and connect with neighbors over hot chai at local cafés and libraries.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="brand-logo">
+        <div class="chai-cup-icon">
+          <span class="steam steam-1"></span>
+          <span class="steam steam-2"></span>
+          <span class="steam steam-3"></span>
+          <span class="cup-emoji">☕</span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Chai & Code</span>
+          <span class="brand-sub">skills swap over chai</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#browse-skills" class="nav-link">Browse Skills</a>
+        <a href="#stories" class="nav-link">Stories</a>
+        <a href="#join" class="nav-link">Join</a>
+      </nav>
+
+      <!-- Auth and Action Buttons -->
+      <div class="nav-actions" id="navAuthActions">
+        <!-- Logged Out View -->
+        <div class="auth-guest" id="authGuest">
+          <button class="btn btn-outline" id="btnOpenLogin">Log In</button>
+          <a href="#join" class="btn btn-primary" id="btnJoinNav">
+            <span>Offer a Skill</span>
+          </a>
+        </div>
+        <!-- Logged In View (Hidden by default) -->
+        <div class="auth-user hidden" id="authUser">
+          <div class="user-pill" id="userMenuBtn">
+            <span class="user-avatar" id="navUserAvatar">☕</span>
+            <span class="user-name" id="navUserName">Priya</span>
+          </div>
+          <button class="btn btn-sm btn-outline" id="btnMySwaps" title="View my swap proposals">My Swaps <span class="badge" id="mySwapsCount">0</span></button>
+          <button class="btn btn-sm btn-ghost" id="btnLogout" title="Log out">Log Out</button>
+        </div>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section 1: Home & Hero -->
+    <section class="hero-section" id="home">
+      <div class="hero-backdrop"></div>
+      <div class="hero-container">
+        
+        <div class="hero-content">
+          <div class="hero-pill-badge">
+            <span class="live-pulse"></span>
+            <span>Local Neighborhood Community &bull; Zero Cash Required</span>
+          </div>
+
+          <h1 class="hero-title">
+            Everyone knows something.<br>
+            <span class="highlight-text">Trade it.</span>
+          </h1>
+
+          <p class="hero-description">
+            Someone in your neighborhood teaches you <strong>Excel</strong> or <strong>Python</strong>, 
+            and you teach them <strong>Canva</strong>, <strong>cooking</strong>, or <strong>guitar</strong>. 
+            Every swap happens face-to-face over a steaming cup of cutting chai at a nearby café or library.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#browse-skills" class="btn btn-primary btn-large">
+              <span>Browse Neighbor Skills</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#join" class="btn btn-secondary btn-large">
+              <span>List What You Can Teach</span>
+            </a>
+          </div>
+
+          <!-- Quick Trust Metrics -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">1,480+</span>
+              <span class="stat-label">Cups of Chai Shared</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">430+</span>
+              <span class="stat-label">Skills Traded</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">₹0 / $0</span>
+              <span class="stat-label">Always Free & Bartered</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-image-wrapper">
+            <img src="assets/hero-art.jpg" alt="Two friendly neighbors enjoying chai while learning together at a sunlit cafe" class="hero-image" loading="eager">
+            <div class="hero-floating-card top-left">
+              <div class="floating-icon">👩🏽‍💻 ➔ 👨🏽‍🍳</div>
+              <div class="floating-text">
+                <strong>Excel Pivot Tables</strong>
+                <span>for Homestyle Biryani</span>
+              </div>
+            </div>
+            <div class="hero-floating-card bottom-right">
+              <div class="floating-icon">☕</div>
+              <div class="floating-text">
+                <strong>Next Meetup: Today 5 PM</strong>
+                <span>Third Wave Cafe, Indiranagar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Live Feed of Recent Swaps -->
+      <div class="live-feed-banner">
+        <div class="live-feed-header">
+          <span class="pulse-indicator"></span>
+          <span class="live-label">LIVE SWAPS HAPPENING NEARBY</span>
+        </div>
+        <div class="ticker-wrapper">
+          <div class="ticker-track" id="liveTickerTrack">
+            <!-- Populated via JavaScript dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: How It Works -->
+    <section class="how-it-works-section" id="how-it-works">
+      <div class="section-container">
+        
+        <div class="section-heading text-center">
+          <span class="section-badge">How It Works</span>
+          <h2 class="section-title">Three Simple Steps. Zero Money. Just Chai.</h2>
+          <p class="section-subtitle">
+            Learning new skills doesn't need expensive masterclasses or solitary tutorials. 
+            Your neighbor is ready to share their craft.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <!-- Step 1 -->
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <div class="step-icon-box">
+              <span class="step-icon">💡</span>
+            </div>
+            <h3 class="step-title">List What You Can Teach</h3>
+            <p class="step-desc">
+              Whether you are an Excel wizard, fluent in French, a sourdough baker, or know basic guitar chords — everyone is an expert at something valuable.
+            </p>
+            <div class="step-tag">Step 1 &bull; 2 mins</div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <div class="step-icon-box">
+              <span class="step-icon">🔍</span>
+            </div>
+            <h3 class="step-title">Pick What You Want to Learn</h3>
+            <p class="step-desc">
+              Browse listings in your neighborhood. Filter by tech, languages, cooking, or music. Discover neighbors looking for exactly the skills you have.
+            </p>
+            <div class="step-tag">Step 2 &bull; Matchmaking</div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <div class="step-icon-box">
+              <span class="step-icon">☕</span>
+            </div>
+            <h3 class="step-title">Meet Over a Cup of Chai</h3>
+            <p class="step-desc">
+              Pick a trusted local café, tapri, or quiet library reading room. Share hot chai, open your laptop or notebook, and trade knowledge face-to-face.
+            </p>
+            <div class="step-tag">Step 3 &bull; Chai & Connect</div>
+          </div>
+        </div>
+
+        <!-- Interactive Matchmaker Simulator -->
+        <div class="interactive-simulator-card">
+          <div class="sim-badge">✨ Interactive Matchmaker Preview</div>
+          <h3 class="sim-title">See Who You Could Match With Right Now</h3>
+          <p class="sim-subtitle">Pick what you can teach and what you want to learn to test our neighborhood matchmaking:</p>
+          
+          <div class="sim-controls">
+            <div class="sim-select-group">
+              <label for="simTeachSelect">I can teach:</label>
+              <select id="simTeachSelect" class="form-control">
+                <option value="tech">Tech (Excel, Python, Web Dev, Figma)</option>
+                <option value="cooking">Cooking (Baking, Biryani, Chai recipes)</option>
+                <option value="music">Music (Guitar, Vocals, Instruments)</option>
+                <option value="language">Language (French, Spanish, English)</option>
+                <option value="crafts">Crafts & Skills (Crochet, Smartphone photo)</option>
+              </select>
+            </div>
+
+            <div class="sim-arrow">⇄</div>
+
+            <div class="sim-select-group">
+              <label for="simLearnSelect">I want to learn:</label>
+              <select id="simLearnSelect" class="form-control">
+                <option value="cooking">Cooking & Sourdough</option>
+                <option value="tech">Tech & Data Analysis</option>
+                <option value="language">Conversational Languages</option>
+                <option value="music">Acoustic Guitar</option>
+                <option value="crafts">Crochet & DIY Crafts</option>
+              </select>
+            </div>
+
+            <button class="btn btn-primary" id="btnRunSimulator">Find Neighbors</button>
+          </div>
+
+          <div class="sim-result-box" id="simResultBox">
+            <!-- Dynamic match preview rendered by JS -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 3: Browse Skills -->
+    <section class="browse-section" id="browse-skills">
+      <div class="section-container">
+        
+        <div class="section-header-row">
+          <div>
+            <span class="section-badge">Skill Roster</span>
+            <h2 class="section-title">Browse Neighborhood Skills</h2>
+            <p class="section-subtitle">Real people in your area ready to trade skills over tea today.</p>
+          </div>
+          
+          <div class="skills-counter-badge" id="skillsCounter">
+            Showing <strong id="countDisplay">0</strong> neighbor skills
+          </div>
+        </div>
+
+        <!-- Filter and Search Bar -->
+        <div class="filter-toolbar">
+          <div class="search-box">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="text" id="skillSearchInput" placeholder="Search by skill, name, or café spot..." aria-label="Search skills">
+            <button class="clear-search-btn hidden" id="clearSearchBtn">&times;</button>
+          </div>
+
+          <div class="area-filter-box">
+            <label for="areaFilter" class="filter-label">Neighborhood:</label>
+            <select id="areaFilter" class="form-select">
+              <option value="all">📍 All Neighborhoods</option>
+              <option value="Indiranagar">Indiranagar</option>
+              <option value="Koramangala">Koramangala</option>
+              <option value="HSR Layout">HSR Layout</option>
+              <option value="Bandra">Bandra</option>
+              <option value="Malleshwaram">Malleshwaram</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="category-pills-row" id="categoryPills">
+          <button class="pill-btn active" data-category="all">✨ All Skills</button>
+          <button class="pill-btn" data-category="tech">💻 Tech &amp; Coding</button>
+          <button class="pill-btn" data-category="language">🗣️ Language &amp; Writing</button>
+          <button class="pill-btn" data-category="music">🎵 Music &amp; Audio</button>
+          <button class="pill-btn" data-category="cooking">🍲 Cooking &amp; Baking</button>
+          <button class="pill-btn" data-category="crafts">🧶 Crafts &amp; DIY</button>
+        </div>
+
+        <!-- Skills Cards Grid -->
+        <div class="skills-grid" id="skillsGrid">
+          <div class="loading-state">
+            <div class="spinner"></div>
+            <p>Brewing fresh skills from our neighborhood database...</p>
+          </div>
+        </div>
+
+        <!-- Empty State (Hidden) -->
+        <div class="empty-state hidden" id="emptySkillsState">
+          <div class="empty-emoji">☕</div>
+          <h3>No matching swaps found in this category or area yet!</h3>
+          <p>Be the very first neighbor to offer or request this skill.</p>
+          <a href="#join" class="btn btn-primary">List This Skill Now</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 4: Community Stories -->
+    <section class="stories-section" id="stories">
+      <div class="section-container">
+        
+        <div class="section-heading text-center">
+          <span class="section-badge">Real Swap Stories</span>
+          <h2 class="section-title">Knowledge Exchanged. Friendships Brewed.</h2>
+          <p class="section-subtitle">
+            Hear from community members who traded spreadsheets for sourdough, French for websites, and guitar chords for photography.
+          </p>
+        </div>
+
+        <div class="stories-grid" id="storiesGrid">
+          <!-- Populated from SQLite via app.js -->
+        </div>
+
+        <!-- Chai Meetup Cafes Spotlight -->
+        <div class="cafe-spotlight-box">
+          <div class="cafe-spotlight-content">
+            <span class="cafe-tag">🤝 Verified Community Chai Spots</span>
+            <h3>Where the Swaps Happen</h3>
+            <p>
+              We recommend safe, vibrant, and well-lit public spots with good tea, reliable Wi-Fi, and comfortable seating. Many partner cafes offer 10% off on cutting chai and samosas for Chai &amp; Code pairs!
+            </p>
+            <div class="cafe-spots-chips">
+              <span class="spot-chip">☕ Third Wave Coffee (Indiranagar)</span>
+              <span class="spot-chip">🍵 Chaayos (Koramangala 80ft Rd)</span>
+              <span class="spot-chip">📖 Central Public Library Reading Veranda</span>
+              <span class="spot-chip">☕ Subko Coffee Roasters (Bandra West)</span>
+              <span class="spot-chip">☕ Blue Tokai Coffee (Indiranagar)</span>
+              <span class="spot-chip">🌿 Green Library Cafe (HSR Sector 2)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 5: Join & Sign-Up with Real Database Auth & Live Card Preview -->
+    <section class="join-section" id="join">
+      <div class="section-container">
+        
+        <div class="join-grid-layout">
+          
+          <!-- Join Form Card -->
+          <div class="join-card">
+            <div class="join-header">
+              <span class="section-badge">Join The Community</span>
+              <h2 class="join-title">List Your Skill &amp; Get Your Chai Card</h2>
+              <p class="join-desc">
+                Stored in our neighborhood database. Zero membership fees. Never pay with money.
+              </p>
+            </div>
+
+            <!-- Auth Switch Tabs -->
+            <div class="auth-tabs">
+              <button class="tab-btn active" id="tabRegister">New Member (Sign Up)</button>
+              <button class="tab-btn" id="tabLogin">Existing Member (Log In)</button>
+            </div>
+
+            <!-- Registration Form -->
+            <form id="registerForm" class="auth-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="regFullName">Full Name *</label>
+                  <input type="text" id="regFullName" class="form-control" placeholder="e.g. Maya Iyer" required>
+                </div>
+                <div class="form-group">
+                  <label for="regUsername">Login ID / Email *</label>
+                  <input type="email" id="regUsername" class="form-control" placeholder="maya@example.com" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="regPassword">Password * <small>(Stored securely with PBKDF2 hash)</small></label>
+                  <input type="password" id="regPassword" class="form-control" placeholder="At least 6 characters" minlength="6" required>
+                </div>
+                <div class="form-group">
+                  <label for="regNeighborhood">Neighborhood / Area *</label>
+                  <select id="regNeighborhood" class="form-control" required>
+                    <option value="Indiranagar">Indiranagar</option>
+                    <option value="Koramangala">Koramangala</option>
+                    <option value="HSR Layout">HSR Layout</option>
+                    <option value="Bandra">Bandra</option>
+                    <option value="Malleshwaram">Malleshwaram</option>
+                    <option value="Downtown / Central">Downtown / Central</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-divider"><span>Skill Swap Details</span></div>
+
+              <div class="form-row">
+                <div class="form-group flex-2">
+                  <label for="regTeachSkill">What can you teach? *</label>
+                  <input type="text" id="regTeachSkill" class="form-control" placeholder="e.g. Advanced Excel, Canva Design, Italian Pasta..." required>
+                </div>
+                <div class="form-group flex-1">
+                  <label for="regTeachCategory">Category *</label>
+                  <select id="regTeachCategory" class="form-control" required>
+                    <option value="tech">Tech &amp; Coding</option>
+                    <option value="cooking">Cooking &amp; Baking</option>
+                    <option value="language">Language &amp; Writing</option>
+                    <option value="music">Music &amp; Audio</option>
+                    <option value="crafts">Crafts &amp; DIY</option>
+                    <option value="business">Business &amp; Productivity</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="regLearnSkill">What do you want to learn in return? *</label>
+                <input type="text" id="regLearnSkill" class="form-control" placeholder="e.g. Beginner Python, French conversation, Sourdough..." required>
+              </div>
+
+              <div class="form-group">
+                <label for="regPreferredSpot">Preferred Local Café or Library Meetup Spot</label>
+                <input type="text" id="regPreferredSpot" class="form-control" placeholder="e.g. Third Wave Coffee on 12th Main, or City Library">
+              </div>
+
+              <div class="form-group">
+                <label for="regBio">Short Note to Neighbors</label>
+                <textarea id="regBio" class="form-control" rows="2" placeholder="Tell people a little about your experience or teaching style..."></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-large btn-block" id="btnSubmitRegister">
+                  <span>☕ Join &amp; Publish My Skill Card</span>
+                </button>
+              </div>
+            </form>
+
+            <!-- Login Form (Toggled via Tab) -->
+            <form id="loginForm" class="auth-form hidden">
+              <div class="form-group">
+                <label for="loginUsername">Login ID / Email</label>
+                <input type="text" id="loginUsername" class="form-control" placeholder="e.g. priya@chaiandcode.local" required>
+              </div>
+              <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
+              </div>
+              <div class="demo-accounts-hint">
+                <span>💡 Demo account: <code>priya@chaiandcode.local</code> / <code>password123</code></span>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-large btn-block" id="btnSubmitLogin">
+                  <span>Log In to Chai &amp; Code</span>
+                </button>
+              </div>
+            </form>
+
+          </div>
+
+          <!-- Live Card Preview Sidebar -->
+          <div class="preview-sidebar">
+            <div class="preview-sticky">
+              <div class="preview-badge">✨ Live Skill Card Preview</div>
+              <p class="preview-tip">This is how your card will appear in the Browse Skills directory:</p>
+
+              <!-- Dynamically updated preview card -->
+              <div class="skill-card preview-card" id="livePreviewCard">
+                <div class="card-header">
+                  <div class="author-info">
+                    <div class="avatar preview-avatar" id="prevAvatar">☕</div>
+                    <div>
+                      <h4 class="author-name" id="prevFullName">Your Name</h4>
+                      <div class="author-location">
+                        <span class="location-pin">📍</span>
+                        <span id="prevNeighborhood">Indiranagar</span>
+                        <span class="verified-tag">✓ Verified</span>
+                      </div>
+                    </div>
+                  </div>
+                  <span class="category-chip" id="prevCategory">Tech</span>
+                </div>
+
+                <div class="card-body">
+                  <div class="skill-row teach-row">
+                    <span class="skill-badge-label teach-label">Can Teach</span>
+                    <strong class="skill-name" id="prevTeachSkill">Advanced Excel &amp; Formulas</strong>
+                  </div>
+                  <div class="skill-row learn-row">
+                    <span class="skill-badge-label learn-label">Wants to Learn</span>
+                    <strong class="skill-name" id="prevLearnSkill">Authentic Biryani &amp; Cooking</strong>
+                  </div>
+                  <p class="skill-desc" id="prevBio">I can teach you Pivot tables, VLOOKUP/XLOOKUP, and automation formulas in 2 cups of chai!</p>
+                </div>
+
+                <div class="card-footer">
+                  <div class="cafe-spot">
+                    <span class="cafe-icon">☕</span>
+                    <span id="prevSpot">Third Wave Coffee, 12th Main</span>
+                  </div>
+                  <button class="btn btn-sm btn-outline" disabled>Propose a Swap</button>
+                </div>
+              </div>
+
+              <!-- Neighborhood Safety Pledge -->
+              <div class="safety-pledge-box">
+                <h4>🛡️ The Chai &amp; Code Promise</h4>
+                <ul>
+                  <li>Always in public spaces (cafés, libraries, community centres).</li>
+                  <li>Strictly zero money exchanged — only fair skills bartered.</li>
+                  <li>Be kind, patient, and respectful of everyone's learning pace.</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="chai-cup-icon">☕</div>
+        <span class="brand-title">Chai &amp; Code</span>
+        <p class="footer-tagline">
+          Building stronger, smarter neighborhoods one cup of tea and one exchanged skill at a time.
+        </p>
+      </div>
+
+      <div class="footer-links-group">
+        <h4>Navigation</h4>
+        <a href="#home">Home</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#browse-skills">Browse Skills</a>
+        <a href="#stories">Community Stories</a>
+        <a href="#join">Join Neighborhood</a>
+      </div>
+
+      <div class="footer-links-group">
+        <h4>Popular Categories</h4>
+        <a href="#browse-skills" onclick="setCategoryFilter('tech')">Tech &amp; Coding</a>
+        <a href="#browse-skills" onclick="setCategoryFilter('cooking')">Cooking &amp; Baking</a>
+        <a href="#browse-skills" onclick="setCategoryFilter('language')">Language Exchange</a>
+        <a href="#browse-skills" onclick="setCategoryFilter('music')">Music &amp; Instruments</a>
+      </div>
+
+      <div class="footer-links-group">
+        <h4>Neighborhoods</h4>
+        <span>📍 Indiranagar</span>
+        <span>📍 Koramangala</span>
+        <span>📍 HSR Layout</span>
+        <span>📍 Bandra</span>
+        <span>📍 Malleshwaram</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Chai &amp; Code. Inspired by the warmth of cutting chai and the joy of mutual learning.</p>
+    </div>
+  </footer>
+
+  <!-- Modal 1: Propose a Swap Modal -->
+  <dialog class="app-modal" id="swapModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">☕ Propose a Skill Swap</h3>
+        <button class="modal-close-btn" id="closeSwapModal">&times;</button>
+      </div>
+      <form id="swapProposalForm" class="modal-body">
+        <div class="swap-partner-summary" id="swapPartnerSummary">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="form-group">
+          <label for="swapOfferedSkill">What skill will you teach them in exchange? *</label>
+          <input type="text" id="swapOfferedSkill" class="form-control" placeholder="e.g. Basic Spanish, Canva graphics, Guitar basics..." required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="swapMeetupSpot">Suggested Café / Spot *</label>
+            <input type="text" id="swapMeetupSpot" class="form-control" placeholder="e.g. Third Wave Coffee or Central Library" required>
+          </div>
+          <div class="form-group">
+            <label for="swapScheduledTime">Preferred Time</label>
+            <input type="text" id="swapScheduledTime" class="form-control" placeholder="e.g. Saturday 4:00 PM">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="swapNote">Personal Note</label>
+          <textarea id="swapNote" class="form-control" rows="3" placeholder="Say hi and introduce yourself! Mention why you'd love to swap skills over chai."></textarea>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" id="cancelSwapModal">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btnSendSwap">Send Swap Proposal</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Modal 2: My Swaps Dashboard Modal -->
+  <dialog class="app-modal" id="mySwapsModal">
+    <div class="modal-content modal-large">
+      <div class="modal-header">
+        <h3 class="modal-title">☕ My Active &amp; Proposed Swaps</h3>
+        <button class="modal-close-btn" id="closeMySwapsModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="mySwapsList" class="my-swaps-container">
+          <div class="spinner"></div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-primary" id="closeMySwapsModalBtn">Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
