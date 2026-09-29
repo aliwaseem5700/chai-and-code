@@ -183,17 +183,17 @@ function updateAuthUI(user) {
 // ==========================================================================
 async function loadRecentSwapsTicker() {
   const res = await apiRequest('/api/swaps/recent');
-  let swaps = [];
   if (res.ok && res.data && res.data.swaps && res.data.swaps.length > 0) {
     swaps = res.data.swaps;
-  } else {
-    // Fallback seed swaps for preview
-    swaps = [
-      { requester_name: 'Priya', receiver_name: 'Rohan', skill_offered: 'Excel Pivot Tables', skill_requested: 'Sourdough Secrets', meetup_spot: 'Third Wave Coffee', created_at: '12m ago' },
-      { requester_name: 'Kabir', receiver_name: 'Ananya', skill_offered: 'Python Automation', skill_requested: 'Canva & Branding', meetup_spot: 'Blue Tokai', created_at: '38m ago' },
-      { requester_name: 'Vikram', receiver_name: 'Sneha', skill_offered: 'Acoustic Guitar', skill_requested: 'French Conversation', meetup_spot: 'Subko Bandra', created_at: '1h ago' },
-      { requester_name: 'Grandma Usha', receiver_name: 'Arjun', skill_offered: 'Wool Crochet', skill_requested: 'Smartphone Banking', meetup_spot: 'CTR Kaapi', created_at: '2h ago' }
-    ];
+  }
+
+  if (swaps.length === 0) {
+    DOM.liveTickerTrack.innerHTML = `
+      <span class="ticker-item">
+        <span>🌱 <strong>Welcome to Chai &amp; Code!</strong> Be the first neighbor to list a skill and propose a swap over tea.</span>
+      </span>
+    `;
+    return;
   }
 
   // Render ticker track (double track for infinite marquee loop)
@@ -204,7 +204,7 @@ async function loadRecentSwapsTicker() {
     </span>
   `).join('');
 
-  DOM.liveTickerTrack.innerHTML = itemsHtml + itemsHtml; // duplicate for loop
+  DOM.liveTickerTrack.innerHTML = itemsHtml + itemsHtml;
 }
 
 // ==========================================================================
