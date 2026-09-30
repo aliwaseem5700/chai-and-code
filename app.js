@@ -37,12 +37,20 @@ const DOM = {
   btnRunSimulator: document.getElementById('btnRunSimulator'),
   simResultBox: document.getElementById('simResultBox'),
 
+  // Hero Search Card
+  heroSkillInput: document.getElementById('heroSkillInput'),
+  heroPlaceInput: document.getElementById('heroPlaceInput'),
+  btnHeroSearch: document.getElementById('btnHeroSearch'),
+
   // Browse Skills
   skillsGrid: document.getElementById('skillsGrid'),
   countDisplay: document.getElementById('countDisplay'),
   skillSearchInput: document.getElementById('skillSearchInput'),
   clearSearchBtn: document.getElementById('clearSearchBtn'),
+  placeSearchInput: document.getElementById('placeSearchInput'),
+  clearPlaceBtn: document.getElementById('clearPlaceBtn'),
   areaFilter: document.getElementById('areaFilter'),
+  placePills: document.getElementById('placePills'),
   categoryPills: document.getElementById('categoryPills'),
   emptySkillsState: document.getElementById('emptySkillsState'),
 
@@ -671,6 +679,31 @@ function initEventListeners() {
     showToast('Logged out successfully. See you at the next chai meetup!');
   });
 
+  // Hero Search Card Actions
+  if (DOM.btnHeroSearch) {
+    const executeHeroSearch = () => {
+      const skill = DOM.heroSkillInput.value.trim();
+      const place = DOM.heroPlaceInput.value.trim();
+
+      if (skill) {
+        DOM.skillSearchInput.value = skill;
+        DOM.clearSearchBtn.classList.remove('hidden');
+        state.searchQuery = skill;
+      }
+      if (place) {
+        DOM.placeSearchInput.value = place;
+        DOM.clearPlaceBtn.classList.remove('hidden');
+        state.activeNeighborhood = place;
+      }
+      loadSkills();
+      window.location.hash = '#browse-skills';
+    };
+
+    DOM.btnHeroSearch.addEventListener('click', executeHeroSearch);
+    DOM.heroSkillInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') executeHeroSearch(); });
+    DOM.heroPlaceInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') executeHeroSearch(); });
+  }
+
   // Category Filter Pills
   DOM.categoryPills.addEventListener('click', (e) => {
     const pill = e.target.closest('.pill-btn');
@@ -681,13 +714,94 @@ function initEventListeners() {
     loadSkills();
   });
 
-  // Neighborhood Area Filter
+  // Quick Place Filter Pills
+  if (DOM.placePills) {
+    DOM.placePills.addEventListener('click', (e) => {
+      const pill = e.target.closest('.pill-btn');
+      if (!pill) return;
+      DOM.placePills.querySelectorAll('.pill-btn').forEach(btn => btn.classList.remove('active'));
+      pill.classList.add('active');
+      const place = pill.dataset.place;
+      state.activeNeighborhood = place;
+
+      if (place === 'all') {
+        if (DOM.placeSearchInput) {
+          DOM.placeSearchInput.value = '';
+          DOM.clearPlaceBtn.classList.add('hidden');
+        }
+        if (DOM.areaFilter) DOM.areaFilter.value = 'all';
+      } else {
+        if (DOM.placeSearchInput) {
+          DOM.placeSearchInput.value = place;
+          DOM.clearPlaceBtn.classList.remove('hidden');
+        }
+        if (DOM.areaFilter) {
+          DOM.areaFilter.value = place;
+        }
+      }
+      loadSkills();
+    });
+  }
+
+  // Neighborhood Area Dropdown Filter
   DOM.areaFilter.addEventListener('change', () => {
-    state.activeNeighborhood = DOM.areaFilter.value;
+    const place = DOM.areaFilter.value;
+    state.activeNeighborhood = place;
+    if (DOM.placeSearchInput) {
+      DOM.placeSearchInput.value = place === 'all' ? '' : place;
+      DOM.clearPlaceBtn.classList.toggle('hidden', place === 'all');
+    }
+    if (DOM.placePills) {
+      DOM.placePills.querySelectorAll('.pill-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.place.toLowerCase() === place.toLowerCase());
+      });
+    }
     loadSkills();
   });
 
-  // Search Input with Debounce
+  // Place Search Input with Debounce & Suggestions
+  let placeSearchTimeout = null;
+  if (DOM.placeSearchInput) {
+    DOM.placeSearchInput.addEventListener('input', () => {
+      const query = DOM.placeSearchInput.value.trim();
+      DOM.clearPlaceBtn.classList.toggle('hidden', !query);
+      clearTimeout(placeSearchTimeout);
+      placeSearchTimeout = setTimeout(() => {
+        state.activeNeighborhood = query || 'all';
+        // Sync dropdown if matching
+        if (DOM.areaFilter) {
+          const matched = Array.from(DOM.areaFilter.options).some(o => o.value.toLowerCase() === query.toLowerCase());
+          if (matched) {
+            DOM.areaFilter.value = query;
+          } else if (!query) {
+            DOM.areaFilter.value = 'all';
+          }
+        }
+        // Sync place pills
+        if (DOM.placePills) {
+          DOM.placePills.querySelectorAll('.pill-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.place.toLowerCase() === (query ? query.toLowerCase() : 'all'));
+          });
+        }
+        loadSkills();
+      }, 250);
+    });
+
+    DOM.clearPlaceBtn.addEventListener('click', () => {
+      DOM.placeSearchInput.value = '';
+      DOM.clearPlaceBtn.classList.add('hidden');
+      state.activeNeighborhood = 'all';
+      if (DOM.areaFilter) DOM.areaFilter.value = 'all';
+      if (DOM.placePills) {
+        DOM.placePills.querySelectorAll('.pill-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.place === 'all');
+        });
+      }
+      loadSkills();
+    });
+  }
+
+  // Skill Keyword Search Input with Debounce
   let searchTimeout = null;
   DOM.skillSearchInput.addEventListener('input', () => {
     const query = DOM.skillSearchInput.value.trim();

@@ -98,6 +98,23 @@
             </a>
           </div>
 
+          <!-- Hero Search & Place Selector Card -->
+          <div class="hero-search-card">
+            <div class="hero-search-field">
+              <span class="hero-search-icon">🔍</span>
+              <input type="text" id="heroSkillInput" placeholder="Skill to learn (e.g. Python, Excel, Cooking)..." aria-label="Skill to learn">
+            </div>
+            <div class="hero-search-divider"></div>
+            <div class="hero-search-field">
+              <span class="hero-search-icon">📍</span>
+              <input type="text" id="heroPlaceInput" list="allPlacesList" placeholder="Search place (Kochi, Calicut, Trivandrum...)" aria-label="Select or search place">
+            </div>
+            <button class="btn btn-primary hero-search-btn" id="btnHeroSearch" type="button">
+              <span>Find Swaps</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+
           <!-- Quick Trust Metrics -->
           <div class="hero-stats">
             <div class="stat-item">
@@ -265,18 +282,26 @@
           </div>
         </div>
 
-        <!-- Filter and Search Bar -->
+        <!-- Search & Filter Controls -->
         <div class="filter-toolbar">
+          <!-- Skill Search -->
           <div class="search-box">
             <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-            <input type="text" id="skillSearchInput" placeholder="Search by skill, name, or café spot..." aria-label="Search skills">
-            <button class="clear-search-btn hidden" id="clearSearchBtn">&times;</button>
+            <input type="text" id="skillSearchInput" placeholder="Search by skill (Excel, Python, Guitar, Cooking)..." aria-label="Search skills">
+            <button class="clear-search-btn hidden" id="clearSearchBtn" title="Clear skill search">&times;</button>
           </div>
 
+          <!-- Place Search with Autocomplete Datalist -->
+          <div class="search-box place-search-box">
+            <span class="search-icon">📍</span>
+            <input type="text" id="placeSearchInput" list="allPlacesList" placeholder="Search place (Kochi, Calicut, Trivandrum...)" aria-label="Search place">
+            <button class="clear-search-btn hidden" id="clearPlaceBtn" title="Clear place search">&times;</button>
+          </div>
+
+          <!-- Quick Dropdown Filter -->
           <div class="area-filter-box">
-            <label for="areaFilter" class="filter-label">Neighborhood:</label>
-            <select id="areaFilter" class="form-select">
-              <option value="all">📍 All Locations (India &amp; Kerala)</option>
+            <select id="areaFilter" class="form-select" aria-label="Select Neighborhood or District">
+              <option value="all">📍 All Locations</option>
               
               <optgroup label="🌴 Kerala — All 14 Districts &amp; Hubs">
                 <option value="Kochi">Kochi / Ernakulam (Kakkanad, Fort Kochi, Edappally)</option>
@@ -296,13 +321,13 @@
               </optgroup>
 
               <optgroup label="🇮🇳 Other Major Indian Hubs">
-                <option value="Bengaluru">Bengaluru (Indiranagar, Koramangala, HSR, Whitefield)</option>
-                <option value="Mumbai">Mumbai (Bandra, Andheri, Powai, South Mumbai)</option>
+                <option value="Bengaluru">Bengaluru (Indiranagar, Koramangala, HSR)</option>
+                <option value="Mumbai">Mumbai (Bandra, Andheri, Powai)</option>
                 <option value="Delhi NCR">Delhi NCR (Connaught Place, Gurgaon, Noida)</option>
-                <option value="Hyderabad">Hyderabad (Hitec City, Madhapur, Gachibowli)</option>
+                <option value="Hyderabad">Hyderabad (Hitec City, Madhapur)</option>
                 <option value="Chennai">Chennai (Adyar, OMR, Anna Nagar)</option>
-                <option value="Pune">Pune (Koregaon Park, Hinjewadi, Baner)</option>
-                <option value="Kolkata">Kolkata (Salt Lake, New Town, Park Street)</option>
+                <option value="Pune">Pune (Koregaon Park, Hinjewadi)</option>
+                <option value="Kolkata">Kolkata (Salt Lake, New Town)</option>
                 <option value="Ahmedabad">Ahmedabad</option>
                 <option value="Coimbatore">Coimbatore</option>
                 <option value="Goa">Goa</option>
@@ -311,14 +336,37 @@
           </div>
         </div>
 
+        <!-- Quick Places Pills Carousel -->
+        <div class="pills-wrapper">
+          <span class="pills-label">Places:</span>
+          <div class="category-pills-row place-pills-row" id="placePills">
+            <button class="pill-btn active" data-place="all">📍 All Places</button>
+            <button class="pill-btn" data-place="Kochi">🌴 Kochi / Infopark</button>
+            <button class="pill-btn" data-place="Thiruvananthapuram">🌴 Trivandrum</button>
+            <button class="pill-btn" data-place="Kozhikode">🌴 Kozhikode</button>
+            <button class="pill-btn" data-place="Thrissur">🌴 Thrissur</button>
+            <button class="pill-btn" data-place="Kannur">🌴 Kannur</button>
+            <button class="pill-btn" data-place="Kottayam">🌴 Kottayam</button>
+            <button class="pill-btn" data-place="Palakkad">🌴 Palakkad</button>
+            <button class="pill-btn" data-place="Wayanad">🌴 Wayanad</button>
+            <button class="pill-btn" data-place="Alappuzha">🌴 Alappuzha</button>
+            <button class="pill-btn" data-place="Malappuram">🌴 Malappuram</button>
+            <button class="pill-btn" data-place="Bengaluru">🇮🇳 Bengaluru</button>
+            <button class="pill-btn" data-place="Mumbai">🇮🇳 Mumbai</button>
+          </div>
+        </div>
+
         <!-- Category Filter Pills -->
-        <div class="category-pills-row" id="categoryPills">
-          <button class="pill-btn active" data-category="all">✨ All Skills</button>
-          <button class="pill-btn" data-category="tech">💻 Tech &amp; Coding</button>
-          <button class="pill-btn" data-category="language">🗣️ Language &amp; Writing</button>
-          <button class="pill-btn" data-category="music">🎵 Music &amp; Audio</button>
-          <button class="pill-btn" data-category="cooking">🍲 Cooking &amp; Baking</button>
-          <button class="pill-btn" data-category="crafts">🧶 Crafts &amp; DIY</button>
+        <div class="pills-wrapper">
+          <span class="pills-label">Category:</span>
+          <div class="category-pills-row" id="categoryPills">
+            <button class="pill-btn active" data-category="all">✨ All Skills</button>
+            <button class="pill-btn" data-category="tech">💻 Tech &amp; Coding</button>
+            <button class="pill-btn" data-category="language">🗣️ Language &amp; Writing</button>
+            <button class="pill-btn" data-category="music">🎵 Music &amp; Audio</button>
+            <button class="pill-btn" data-category="cooking">🍲 Cooking &amp; Baking</button>
+            <button class="pill-btn" data-category="crafts">🧶 Crafts &amp; DIY</button>
+          </div>
         </div>
 
         <!-- Skills Cards Grid -->
@@ -576,6 +624,45 @@
 
       </div>
     </section>
+
+  <!-- Shared Autocomplete Datalist for Places (Kerala + All India) -->
+  <datalist id="allPlacesList">
+    <!-- Kerala Districts & Key Hubs -->
+    <option value="Kochi / Ernakulam, Kerala">Kochi / Ernakulam (Kakkanad, Fort Kochi, Edappally)</option>
+    <option value="Thiruvananthapuram, Kerala">Thiruvananthapuram (Technopark, Palayam, Kowdiar)</option>
+    <option value="Kozhikode / Calicut, Kerala">Kozhikode / Calicut (Cyberpark, Beach Rd)</option>
+    <option value="Thrissur, Kerala">Thrissur (Swaraj Round, Town)</option>
+    <option value="Kannur, Kerala">Kannur (Thalassery, Payyambalam)</option>
+    <option value="Kollam, Kerala">Kollam (Beach, Ashramam)</option>
+    <option value="Alappuzha, Kerala">Alappuzha / Alleppey</option>
+    <option value="Kottayam, Kerala">Kottayam (Kumarakom, Pala)</option>
+    <option value="Palakkad, Kerala">Palakkad</option>
+    <option value="Malappuram, Kerala">Malappuram (Manjeri, Perinthalmanna)</option>
+    <option value="Wayanad, Kerala">Wayanad (Kalpetta, Sultan Bathery)</option>
+    <option value="Idukki, Kerala">Idukki (Munnar, Thodupuzha)</option>
+    <option value="Kasaragod, Kerala">Kasaragod</option>
+    <option value="Pathanamthitta, Kerala">Pathanamthitta (Thiruvalla, Adoor)</option>
+    <!-- Kerala Specific Towns & Hubs -->
+    <option value="Kakkanad (Infopark), Kochi">Kakkanad (Infopark), Kochi</option>
+    <option value="Fort Kochi, Kerala">Fort Kochi, Kerala</option>
+    <option value="Panampilly Nagar, Kochi">Panampilly Nagar, Kochi</option>
+    <option value="Edappally, Kochi">Edappally, Kochi</option>
+    <option value="Technopark, Thiruvananthapuram">Technopark, Thiruvananthapuram</option>
+    <option value="Cyberpark, Kozhikode">Cyberpark, Kozhikode</option>
+    <option value="Thalassery, Kannur">Thalassery, Kannur</option>
+    <option value="Kumarakom, Kottayam">Kumarakom, Kottayam</option>
+    <!-- Major Indian Metros & Hubs -->
+    <option value="Bengaluru, Karnataka">Bengaluru (Indiranagar, Koramangala, HSR)</option>
+    <option value="Mumbai, Maharashtra">Mumbai (Bandra, Andheri, Powai)</option>
+    <option value="Delhi NCR">Delhi NCR (Connaught Place, Gurgaon, Noida)</option>
+    <option value="Hyderabad, Telangana">Hyderabad (Hitec City, Madhapur)</option>
+    <option value="Chennai, Tamil Nadu">Chennai (Adyar, OMR, Anna Nagar)</option>
+    <option value="Pune, Maharashtra">Pune (Koregaon Park, Hinjewadi)</option>
+    <option value="Kolkata, West Bengal">Kolkata (Salt Lake, New Town)</option>
+    <option value="Ahmedabad, Gujarat">Ahmedabad</option>
+    <option value="Coimbatore, Tamil Nadu">Coimbatore</option>
+    <option value="Goa">Goa</option>
+  </datalist>
 
   </main>
 
